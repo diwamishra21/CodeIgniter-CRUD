@@ -1,0 +1,46 @@
+Basics for CI CRUD project
+
+download CI from git
+
+
+Create ci_crud DB and import table "products"
+
+
+In D:\Xamapp\htdocs\CI_CRUD\application\config\config.php
+write base_url-
+$config['base_url'] = 'http://localhost/CI_CRUD/';
+
+In D:\Xamapp\htdocs\CI_CRUD\application\config\autoload.php
+write-
+$autoload['libraries'] = array('database');
+$autoload['helper'] = array('url');
+
+In D:\Xamapp\htdocs\CI_CRUD\application\config\database.php
+give database info
+
+In D:\Xamapp\htdocs\CI_CRUD\application\config\routes.php
+give routing-
+$route['products'] = "products/index";
+$route['users'] = "users/login";
+$route['productsCreate']['post'] = "products/store";
+$route['productsEdit/(:any)'] = "products/edit/$1";
+$route['productsUpdate/(:any)']['put'] = "products/update/$1";
+$route['productsDelete/(:any)']['delete'] = "products/delete/$1";
+
+create products controller and fucntions
+
+
+In Views
+
+create folders for products files and includes folder for header and footer
+
+Create a .htaccess file in root of project and write these codes-
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1
+
+
+In Models
+create a Product_model
